@@ -10,6 +10,12 @@
 	#error Get some Windows running.
 #endif
 
+#ifdef FM_ENABLE_ASSERTS
+	#define FM_ASSERT(x, ...) { if(!(x)) { FM_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak();} }
+#else
+	#define FM_ASSERT(x, ...)
+#endif
+
 #define BIT(x) (1 << x)
 
 #define SUPPRESS_ALL_WARNING _Pragma("GCC diagnostic push") __pragma(warning( push ))

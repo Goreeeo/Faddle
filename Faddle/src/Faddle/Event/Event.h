@@ -1,5 +1,7 @@
 #pragma once
 
+#include "fmpch.h"
+
 #include "Faddle/Core.h"
 
 SUPPRESS_WARNING_VS(26812)
@@ -9,7 +11,7 @@ namespace Faddle {
 		None = 0,
 		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
 		AppTick, AppUpdate, AppRender,
-		KeyPressed, KeyReleased,
+		KeyPressed, KeyTyped, KeyReleased,
 		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
 	};
 
@@ -35,11 +37,12 @@ namespace Faddle {
 		virtual const char* GetName() const = 0;
 		virtual int GetCategoryFlags() const = 0;
 		virtual std::string ToString() const { return GetName(); }
+
 		inline bool IsInCategory(EventCategory category) {
 			return GetCategoryFlags() & category;
 		}
-	protected:
-		bool m_Handled = false;
+
+		bool Handled = false;
 	};
 
 	class EventDispatcher {
@@ -51,7 +54,7 @@ namespace Faddle {
 		template<typename T>
 		bool Dispatch(EventFunc<T> func) {
 			if (m_Event.GetEventType() == T::GetStaticType()) {
-				m_Event.m_Handled = func(*(T*)&m_Event);
+				m_Event.Handled = func(*(T*)&m_Event);
 				return true;
 			}
 			return false;

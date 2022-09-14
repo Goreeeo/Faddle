@@ -7,6 +7,15 @@
     <Filter Include="Faddle\Event">
       <UniqueIdentifier>{561851D5-427B-E079-EB00-1930D742ACFC}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Faddle\ImGui">
+      <UniqueIdentifier>{2F0C94D5-1B6F-237A-C4F4-5B30B036EFFC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Win64">
+      <UniqueIdentifier>{F136D494-DD04-C89A-C698-38C1B205A4FF}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Faddle.h" />
@@ -31,18 +40,51 @@
     <ClInclude Include="src\Faddle\Event\MouseEvent.h">
       <Filter>Faddle\Event</Filter>
     </ClInclude>
+    <ClInclude Include="src\Faddle\ImGui\ImGuiLayer.h">
+      <Filter>Faddle\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Faddle\Layer.h">
+      <Filter>Faddle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Faddle\LayerStack.h">
+      <Filter>Faddle</Filter>
+    </ClInclude>
     <ClInclude Include="src\Faddle\Log.h">
       <Filter>Faddle</Filter>
     </ClInclude>
+    <ClInclude Include="src\Faddle\Window.h">
+      <Filter>Faddle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Win64\Win64Window.h">
+      <Filter>Platform\Win64</Filter>
+    </ClInclude>
     <ClInclude Include="src\fmpch.h" />
+    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
+    <ClInclude Include="src\Faddle\Input.h" />
+    <ClInclude Include="src\Platform\Win64\Win64Input.h" />
+    <ClInclude Include="src\Faddle\KeyCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Faddle\Application.cpp">
       <Filter>Faddle</Filter>
     </ClCompile>
+    <ClCompile Include="src\Faddle\ImGui\ImGuiLayer.cpp">
+      <Filter>Faddle\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Faddle\Layer.cpp">
+      <Filter>Faddle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Faddle\LayerStack.cpp">
+      <Filter>Faddle</Filter>
+    </ClCompile>
     <ClCompile Include="src\Faddle\Log.cpp">
       <Filter>Faddle</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\Win64\Win64Window.cpp">
+      <Filter>Platform\Win64</Filter>
+    </ClCompile>
     <ClCompile Include="src\fmpch.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
+    <ClCompile Include="src\Platform\Win64\Win64Input.cpp" />
   </ItemGroup>
 </Project>

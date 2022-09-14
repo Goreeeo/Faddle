@@ -10,6 +10,15 @@ workspace "FaddleEngine"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDir = {}
+IncludeDir["GLFW"] = "Faddle/vendor/GLFW/include"
+IncludeDir["glad"] = "Faddle/vendor/glad/include"
+IncludeDir["imgui"] = "Faddle/vendor/imgui"
+
+include "Faddle/vendor/GLFW"
+include "Faddle/vendor/glad"
+include "Faddle/vendor/imgui"
+
 project "Faddle"
 	location "Faddle"
 	kind "SharedLib"
@@ -28,7 +37,17 @@ project "Faddle"
 
 	includedirs {
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.glad}",
+		"%{IncludeDir.imgui}"
+	}
+
+	links {
+		"GLFW",
+		"glad",
+		"ImGui",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
@@ -38,7 +57,8 @@ project "Faddle"
 
 		defines {
 			"FM_PLATFORM_WINDOWS",
-			"FM_BUILD_DLL"
+			"FM_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands {
@@ -47,14 +67,17 @@ project "Faddle"
 
 	filter "configurations:Debug"
 		defines "FM_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "FM_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "FM_DIST"
+		buildoptions "/MD"
 		optimize "On"
 
 project "Example"
@@ -90,12 +113,15 @@ project "Example"
 
 	filter "configurations:Debug"
 		defines "FM_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "FM_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "FM_DIST"
+		buildoptions "/MD"
 		optimize "On"

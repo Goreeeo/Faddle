@@ -4,3 +4,9 @@
 [submodule "glfw"]
 	path = glfw
 	url = https://github.com/TheCherno/glfw
+[submodule "Faddle/vendor/GLFW"]
+	path = Faddle/vendor/GLFW
+	url = https://github.com/TheCherno/glfw
+[submodule "Faddle/vendor/imgui"]
+	path = Faddle/vendor/imgui
+	url = https://github.com/TheCherno/imgui
